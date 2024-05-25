@@ -10,12 +10,13 @@ const TicTacToeLogic = () => {
   const [requiredWins, setRequiredWins] = useState(3); 
   const [xWins, setXWins] = useState(0);
   const [oWins, setOWins] = useState(0);
+  const [draw,setDraw] = useState(0);
   const [finalWinner, setFinalWinner] = useState(null);
 
   const clickSound = new Audio('/click.mp3');
   const winSound = new Audio('/smallwin.wav');
   const finalWinSound = new Audio('/winner.mp3');
-  const drawSound = new Audio('/smallwin.wav');
+  const drawSound = new Audio('/draw.mp3');
 
   useEffect(() => {
     setBoard(initialBoard(size));
@@ -23,8 +24,11 @@ const TicTacToeLogic = () => {
   }, [size]);
 
   useEffect(() => {
-    if (xWins >= requiredWins) setFinalWinner('X');
-    if (oWins >= requiredWins) setFinalWinner('O');
+    if(requiredWins===undefined|| requiredWins<=3) {setFinalWinner(null)}else{
+      if (xWins >= requiredWins) setFinalWinner('X');
+      if (oWins >= requiredWins) setFinalWinner('O');
+    }
+    
   }, [xWins, oWins, requiredWins]);
 
   const calculateWinner = (currentBoard) => {
@@ -95,13 +99,14 @@ const TicTacToeLogic = () => {
     }
     if (!board.includes(null)) {
       drawSound.play();
+      setDraw(draw+1)
       setBoard(initialBoard(size));
       return `It's a draw!`;
     }
     return `Player ${xTurn ? 'X' : 'O'}'s turn`;
   };
 
-  return { board, setSize, initialBoard, size, clickHandler, getMessage, setRequiredWins, xWins, oWins, finalWinner, requiredWins };
+  return { board, setSize, initialBoard, size, clickHandler, getMessage, setRequiredWins, xWins, oWins, finalWinner, requiredWins ,draw,finalWinner};
 };
 
 export default TicTacToeLogic;

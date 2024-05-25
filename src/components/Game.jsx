@@ -4,7 +4,7 @@ import TicTacToeLogic from '../hooks/use-tic-toe';
 
 
 const Game = () => {
- const{board,size,setSize,clickHandler,getMessage,requiredWins,setRequiredWins,xWins,oWins} = TicTacToeLogic()
+ const{board,size,setSize,clickHandler,getMessage,requiredWins,setRequiredWins,xWins,oWins,draw,finalWinner} = TicTacToeLogic()
  const message = getMessage()
   const gridStyle = {
     display: 'grid',
@@ -19,7 +19,9 @@ const Game = () => {
       <div className='font-bold text-xl text-white my-2'>{message}</div>
       <div className='flex justify-between items-center text-lg font-bold max-w-[350px] w-full my-6'>
         <div className=' p-2 '>X wins:<span className='font-bold mx-2 text-green-500 bg-black/30 px-1'>{xWins}</span></div>
+        <div className=' p-2 '>Draw:<span className='font-bold mx-2 text-red-500 bg-black/30 px-1'>{draw}</span></div>
         <div className=' p-2 '>O wins:<span className='font-bold mx-2 text-blue-900 bg-black/30 px-1'>{oWins}</span></div>
+        
       </div>
       <div style={gridStyle}>
         {board.map((box, i) => (
@@ -31,25 +33,11 @@ const Game = () => {
       <div className='mt-4 flex gap-10'>
         <label className='text-lg font-bold'>
           Grid Size:
-          <input
-            type='number'
-            value={size}
-            min='3'
-            onChange={(e) => setSize(Number(e.target.value))}
-            className='w-[50px] p-1 m-1 rounded-md bg-transparent'
-            
-          />
+         <div className='bg-black/30 rounded-md p-1 items-center text-center text-lg'><button className='w-5 h-5' onClick={()=>setSize(size+1)}>+</button>{size}<button disabled={size<=3?true:false} className={`w-5 h-5 ${size<=3?"cursor-not-allowed":""}`} onClick={()=>setSize(size-1)}>-</button></div> 
         </label>
         <label className='text-lg font-bold'>
           No of Wins:
-          <input
-            type="number"
-            value={requiredWins}
-            onChange={(e) => setRequiredWins(Number(e.target.value))}
-            min="3"
-            max={size}
-            className='w-[50px] p-1 m-1 rounded-md bg-transparent'
-          />
+           <div className='bg-black/30 rounded-md p-1 items-center text-center text-lg'><button className='w-5 h-5' onClick={()=>setRequiredWins(requiredWins+1)}>+</button>{requiredWins}<button disabled={requiredWins<=3?true:false} className={`w-5 h-5 ${requiredWins<=3?"cursor-not-allowed":""}`} onClick={()=>setRequiredWins(requiredWins-1)}>-</button></div> 
         </label>
       </div>
     </div>
