@@ -6,7 +6,7 @@ A tic-tac-toe gaming website featuring customizable grid sizes and user-defined 
 
 ## Demo
 
-Click here for live demo=> [click me :)](https://66521e4a165fa17db2e8532d--teal-monstera-abd1ef.netlify.app/)
+Click here for live demo=> [click me :)](https://66522c819bc177ab818876d8--resilient-praline-925c74.netlify.app/)
 
 
 ## Features
