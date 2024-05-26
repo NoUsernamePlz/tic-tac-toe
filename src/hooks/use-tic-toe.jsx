@@ -24,7 +24,7 @@ const TicTacToeLogic = () => {
   }, [size]);
 
   useEffect(() => {
-    if(requiredWins===undefined|| requiredWins<=3) {setFinalWinner(null)}else{
+    if(requiredWins===undefined|| requiredWins<3) {setFinalWinner(null)}else{
       if (xWins >= requiredWins) setFinalWinner('X');
       if (oWins >= requiredWins) setFinalWinner('O');
     }

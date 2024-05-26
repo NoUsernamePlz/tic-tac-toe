@@ -8,8 +8,8 @@ const Game = () => {
  const message = getMessage()
   const gridStyle = {
     display: 'grid',
-    gridTemplateColumns: `repeat(${size}, 80px)`,
-    gridTemplateRows: `repeat(${size}, 80px)`,
+    gridTemplateColumns: `repeat(${size}, 60px)`,
+    gridTemplateRows: `repeat(${size}, 60px)`,
     maxWidth: `${size * 100}px`,
   };
 
@@ -25,7 +25,7 @@ const Game = () => {
       </div>
       <div style={gridStyle}>
         {board.map((box, i) => (
-          <button key={i} className='w-[80px] h-[80px] bg-gradient-to-r from-[#149433] to-[#1066EF] font-bold text-red-900 text-center border-black border-2 hover:scale-110' onClick={()=>clickHandler(i)} disabled={box !== null}>
+          <button key={i} className='w-[60px] h-[60px] bg-gradient-to-r from-[#149433] to-[#1066EF] font-bold text-red-900 text-center border-black border-2 hover:scale-110' onClick={()=>clickHandler(i)} disabled={box !== null}>
             {box}
           </button>
         ))}
